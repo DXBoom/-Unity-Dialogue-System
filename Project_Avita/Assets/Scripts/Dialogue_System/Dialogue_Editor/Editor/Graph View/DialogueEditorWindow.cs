@@ -12,8 +12,11 @@ public class DialogueEditorWindow : EditorWindow
     private DIalogueContainerSO currentDialogueContainer;
     private DialogueGraphView graphView;
 
+    private LanguageType languageType = LanguageType.Russian;
     private ToolbarMenu toolbarMenu;
     private Label nameOfDialogueContainer;
+
+    public LanguageType LanguageType { get => languageType; set => languageType = value; }
 
     [OnOpenAsset(1)]
     public static bool ShowWindow(int _instanceId, int line)
@@ -34,17 +37,21 @@ public class DialogueEditorWindow : EditorWindow
 
     private void OnEnable()
     {
+        ConstructGraphView();
         GenerateToolBar();
+        Load();
     }
 
     private void OnDisable()
     {
-        
+        rootVisualElement.Remove(graphView);
     }
 
     private void ConstructGraphView()
     {
-        // TODO: Add Graph View
+        graphView = new DialogueGraphView(this);
+        graphView.StretchToParentSize();
+        rootVisualElement.Add(graphView);
     }
 
     private void GenerateToolBar()
