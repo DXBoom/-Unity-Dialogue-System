@@ -12,13 +12,13 @@ public class DialogueNode : BaseNode
     private List<LanguageGeneric<AudioClip>> audioClips = new List<LanguageGeneric<AudioClip>>();
     private string name = "";
     private Sprite backgroundImage;
-    private DialogueBackgroundImageType BackgroundImageType;
+    private DialogueBackgroundImageType backgroundImageType;
 
     public List<LanguageGeneric<string>> Texts { get => texts; set => texts = value; }
     public List<LanguageGeneric<AudioClip>> AudioClips { get => audioClips; set => audioClips = value; }
     public Sprite BackgroundImage { get => backgroundImage; set => backgroundImage = value; }
     public string Name { get => name; set => name = value; }
-    public DialogueBackgroundImageType BackgroundImageType1 { get => BackgroundImageType; set => BackgroundImageType = value; }
+    public DialogueBackgroundImageType BackgroundImageType { get => BackgroundImageType; set => BackgroundImageType = value; }
 
     private TextField texts_Field;
     private ObjectField audioClips_Field;
@@ -57,6 +57,66 @@ public class DialogueNode : BaseNode
             });
         }
 
+        // Image 
+        sprite_Field = new ObjectField
+        {
+            objectType = typeof(Sprite),
+            allowSceneObjects = false,
+            value = backgroundImage
+        };
+        sprite_Field.RegisterValueChangedCallback(value => 
+        {
+            backgroundImage = value.newValue as Sprite;
+        });
+        mainContainer.Add(sprite_Field);
+
+        // Background Image Enum
+        backImageType_Field = new EnumField()
+        {
+            value = backgroundImageType
+        };
+        backImageType_Field.Init(backgroundImageType);
+        backImageType_Field.RegisterValueChangedCallback(value =>
+        {
+            backgroundImageType = (DialogueBackgroundImageType)value.newValue;
+        });
+        mainContainer.Add(sprite_Field);
+
+        // Audio Clips
+        audioClips_Field = new ObjectField()
+        {
+            objectType = typeof(AudioClip),
+            allowSceneObjects = false,
+            value = audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType,
+        };
+        audioClips_Field.RegisterValueChangedCallback(value =>
+        {
+            audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue as AudioClip;
+        });
+        audioClips_Field.SetValueWithoutNotify(audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        mainContainer.Add(audioClips_Field);
+
+        // Text Name
+        Label label_name = new Label("Name");
+        label_name.AddToClassList("label_name");
+        label_name.AddToClassList("Label");
+        mainContainer.Add(label_name);
+
+        name_Field = new TextField("Name");
+        texts_Field.RegisterValueChangedCallback(value =>
+        {
+            name = value.newValue;
+        });
+        texts_Field.SetValueWithoutNotify(name);
+        texts_Field.AddToClassList("TextName");
+        mainContainer.Add(texts_Field);
+
+        // Text Box
+        Label label_texts = new Label("Text Box");
+        label_texts.AddToClassList("label_texts");
+        label_texts.AddToClassList("Label");
+        mainContainer.Add(label_texts);
+
         texts_Field = new TextField("");
         texts_Field.RegisterValueChangedCallback(value =>
         {
@@ -67,5 +127,14 @@ public class DialogueNode : BaseNode
 
         texts_Field.AddToClassList("TextBox");
         mainContainer.Add(texts_Field);
+
+        Button button = new Button()
+        {
+            text = "Add Choice"
+        };
+        button.clicked += () =>
+        {
+            // TODO: Add a new Choice for output Port.
+        };
     }
 }
