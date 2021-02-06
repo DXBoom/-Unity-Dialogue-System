@@ -8,3 +8,9 @@ public class DIalogueContainerSO : ScriptableObject
 {
     
 }
+
+public class LanguageGeneric<T>
+{
+    public LanguageType LanguageType;
+    public T LanguageGenericType;
+}

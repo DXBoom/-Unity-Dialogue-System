@@ -18,8 +18,11 @@ public class EventNode : BaseNode
 
     }
 
-    public EventNode(Vector2 _position, DialogueEditorWindow editorWindow, DialogueGraphView _graphView)
+    public EventNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
     {
+        editorWindow = _editorWindow;
+        graphView = _graphView;
+
         title = "Event";
         SetPosition(new Rect(_position, defaultNodeSize));
         nodeGuid = Guid.NewGuid().ToString();
