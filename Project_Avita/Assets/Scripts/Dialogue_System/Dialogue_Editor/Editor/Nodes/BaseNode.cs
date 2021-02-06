@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class BaseNode : Node
 {
-    private string nodeGuid;
+    protected string nodeGuid;
     protected DialogueGraphView graphView;
     protected DialogueEditorWindow editorWindow;
     protected Vector2 defaultNodeSize = new Vector2(200, 250);
