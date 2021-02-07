@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -14,11 +15,14 @@ public class DialogueNode : BaseNode
     private Sprite backgroundImage;
     private DialogueBackgroundImageType backgroundImageType;
 
+    private List<DialogueNodePort> dialogueNodePorts = new List<DialogueNodePort>();
+
     public List<LanguageGeneric<string>> Texts { get => texts; set => texts = value; }
     public List<LanguageGeneric<AudioClip>> AudioClips { get => audioClips; set => audioClips = value; }
     public Sprite BackgroundImage { get => backgroundImage; set => backgroundImage = value; }
     public string Name { get => name; set => name = value; }
     public DialogueBackgroundImageType BackgroundImageType { get => BackgroundImageType; set => BackgroundImageType = value; }
+    public List<DialogueNodePort> DialogueNodePorts { get => dialogueNodePorts; set => dialogueNodePorts = value; }
 
     private TextField texts_Field;
     private ObjectField audioClips_Field;
@@ -136,5 +140,87 @@ public class DialogueNode : BaseNode
         {
             // TODO: Add a new Choice for output Port.
         };
+    }
+
+    public Port AddChoicePort(BaseNode _baseNode, DialogueNodePort _dialogueNodePort = null)
+    {
+        Port port = GetPortInstance(Direction.Output);
+
+        int outputPortCount = _baseNode.outputContainer.Query("connector").ToList().Count();
+        string outputPortName = $"Choice {outputPortCount + 1}";
+
+        DialogueNodePort dialogueNodePort = new DialogueNodePort();
+
+        foreach (LanguageType language in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+        {
+            dialogueNodePort.TextLanguage.Add(new LanguageGeneric<string>()
+            {
+                LanguageType = language,
+                LanguageGenericType = outputPortName
+            });
+        }
+
+        if (_dialogueNodePort != null)
+        {
+            dialogueNodePort.InputGuid = _dialogueNodePort.InputGuid;
+            dialogueNodePort.OutputGuid = _dialogueNodePort.OutputGuid;
+
+            foreach (LanguageGeneric<string> languageGeneric in _dialogueNodePort.TextLanguage)
+            {
+                dialogueNodePort.TextLanguage.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+            }
+        }
+
+        // Text for the port
+        dialogueNodePort.TextField = new TextField();
+        dialogueNodePort.TextField.RegisterValueChangedCallback(value =>
+        {
+            dialogueNodePort.TextLanguage.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue;
+        });
+        dialogueNodePort.TextField.SetValueWithoutNotify(dialogueNodePort.TextLanguage.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        port.contentContainer.Add(dialogueNodePort.TextField);
+
+        // Delete button
+        Button deleteButton = new Button(() => DeletePort(_baseNode, port))
+        {
+            text = "X",
+        };
+
+        port.contentContainer.Add(deleteButton);
+
+        dialogueNodePort.MyPort = port;
+        port.portName = "";
+
+        dialogueNodePorts.Add(dialogueNodePort);
+
+        _baseNode.outputContainer.Add(port);
+
+        // Refresh
+        _baseNode.RefreshPorts();
+        _baseNode.RefreshExpandedState();
+
+        return port;
+    }
+
+    private void DeletePort(BaseNode _node, Port _port)
+    {
+        DialogueNodePort tmp = dialogueNodePorts.Find(port => port.MyPort == _port);
+        dialogueNodePorts.Remove(tmp);
+
+        IEnumerable<Edge> portEdge = graphView.edges.ToList().Where(edge => edge.output == _port);
+
+        if (portEdge.Any())
+        {
+            Edge edge = portEdge.First();
+            edge.input.Disconnect(edge);
+            edge.output.Disconnect(edge);
+            graphView.RemoveElement(edge);
+        }
+
+        _node.outputContainer.Remove(_port);
+
+        // Refresh
+        _node.RefreshPorts();
+        _node.RefreshExpandedState();
     }
 }
