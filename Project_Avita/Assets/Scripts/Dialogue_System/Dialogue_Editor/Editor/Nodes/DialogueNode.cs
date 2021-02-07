@@ -84,7 +84,7 @@ public class DialogueNode : BaseNode
         {
             backgroundImageType = (DialogueBackgroundImageType)value.newValue;
         });
-        mainContainer.Add(sprite_Field);
+        mainContainer.Add(backImageType_Field);
 
         // Audio Clips
         audioClips_Field = new ObjectField()
