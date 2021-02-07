@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 public class DialogueEditorWindow : EditorWindow
 {
-    private DIalogueContainerSO currentDialogueContainer;
+    private DialogueContainerSO currentDialogueContainer;
     private DialogueGraphView graphView;
 
     private LanguageType languageType = LanguageType.Russian;
@@ -23,11 +23,11 @@ public class DialogueEditorWindow : EditorWindow
     {
         UnityEngine.Object item = EditorUtility.InstanceIDToObject(_instanceId);
 
-        if (item is DIalogueContainerSO)
+        if (item is DialogueContainerSO)
         {
             DialogueEditorWindow window = (DialogueEditorWindow)GetWindow(typeof(DialogueEditorWindow));
             window.titleContent = new GUIContent("Dialogue Editor");
-            window.currentDialogueContainer = item as DIalogueContainerSO;
+            window.currentDialogueContainer = item as DialogueContainerSO;
             window.minSize = new Vector2(500, 250);
             window.Load();
         }

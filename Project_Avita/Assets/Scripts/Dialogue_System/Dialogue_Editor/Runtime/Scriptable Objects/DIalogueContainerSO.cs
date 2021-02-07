@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 
 [CreateAssetMenu(menuName = "Dialogue/New Dialogue")]
 [System.Serializable]
-public class DIalogueContainerSO : ScriptableObject
+public class DialogueContainerSO : ScriptableObject
 {
-    public List<NodeLinkData> nodeLinkDatas = new List<NodeLinkData>();
+    public List<NodeLinkData> NodeLinkDatas = new List<NodeLinkData>();
 
     public List<DialogueNodeData> DialogueNodeDatas = new List<DialogueNodeData>();
     public List<EndNodeData> EndNodeDatas = new List<EndNodeData>();

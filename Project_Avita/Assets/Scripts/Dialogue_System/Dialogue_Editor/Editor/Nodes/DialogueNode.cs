@@ -11,7 +11,7 @@ public class DialogueNode : BaseNode
 {
     private List<LanguageGeneric<string>> texts = new List<LanguageGeneric<string>>();
     private List<LanguageGeneric<AudioClip>> audioClips = new List<LanguageGeneric<AudioClip>>();
-    private string name = "";
+    private new string name = "";
     private Sprite backgroundImage;
     private DialogueBackgroundImageType backgroundImageType;
 
