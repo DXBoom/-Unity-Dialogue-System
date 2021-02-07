@@ -25,5 +25,5 @@ public class DialogueNodePort
     public string OutputGuid;
     public Port MyPort;
     public TextField TextField;
-    public List<LanguageGeneric<string>> TextLanguage = new List<LanguageGeneric<string>>();
+    public List<LanguageGeneric<string>> TextLanguages = new List<LanguageGeneric<string>>();
 }
