@@ -9,6 +9,7 @@ public class DialogueGraphView : GraphView
 {
     private string styleSheetsName = "GraphViewStyleSheet";
     private DialogueEditorWindow editorWindow;
+    private NodeSearchWindow searchWindow;
 
     public DialogueGraphView(DialogueEditorWindow _editorWindow)
     {
@@ -27,6 +28,33 @@ public class DialogueGraphView : GraphView
         GridBackground grid = new GridBackground();
         Insert(0, grid);
         grid.StretchToParentSize();
+
+        AddSearchWindow();
+    }
+
+    private void AddSearchWindow()
+    {
+        searchWindow = ScriptableObject.CreateInstance<NodeSearchWindow>();
+        searchWindow.Configure(editorWindow, this);
+        nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), searchWindow);
+    }
+
+    public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+    {
+        List<Port> compatiblePorts = new List<Port>();
+        Port startingPortView = startPort;
+
+        ports.ForEach((port) =>
+        {
+            Port portView = port;
+
+            if (startingPortView != portView && startingPortView.node != portView.node && startingPortView.direction != port.direction)
+            {
+                compatiblePorts.Add(port);
+            }
+        });
+
+        return compatiblePorts;
     }
 
     public void LanguageReload()
@@ -36,5 +64,30 @@ public class DialogueGraphView : GraphView
         {
             dialogueNode.ReloadLanguage();
         }
+    }
+
+    public StartNode CreateStartNode(Vector2 _pos)
+    {
+        StartNode tmp = new StartNode(_pos, editorWindow, this);
+
+        return tmp;
+    }
+    public EndNode CreateEndNode(Vector2 _pos)
+    {
+        EndNode tmp = new EndNode(_pos, editorWindow, this);
+
+        return tmp;
+    }
+    public EventNode CreateEventNode(Vector2 _pos)
+    {
+        EventNode tmp = new EventNode(_pos, editorWindow, this);
+
+        return tmp;
+    }
+    public DialogueNode CreateDialogueNode(Vector2 _pos)
+    {
+        DialogueNode tmp = new DialogueNode(_pos, editorWindow, this);
+
+        return tmp;
     }
 }

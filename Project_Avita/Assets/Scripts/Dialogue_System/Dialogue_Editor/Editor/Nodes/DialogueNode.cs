@@ -106,14 +106,14 @@ public class DialogueNode : BaseNode
         label_name.AddToClassList("Label");
         mainContainer.Add(label_name);
 
-        name_Field = new TextField("Name");
-        texts_Field.RegisterValueChangedCallback(value =>
+        name_Field = new TextField("");
+        name_Field.RegisterValueChangedCallback(value =>
         {
             name = value.newValue;
         });
-        texts_Field.SetValueWithoutNotify(name);
-        texts_Field.AddToClassList("TextName");
-        mainContainer.Add(texts_Field);
+        name_Field.SetValueWithoutNotify(name);
+        name_Field.AddToClassList("TextName");
+        mainContainer.Add(name_Field);
 
         // Text Box
         Label label_texts = new Label("Text Box");
