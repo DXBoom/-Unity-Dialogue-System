@@ -11,6 +11,7 @@ public class DialogueEditorWindow : EditorWindow
 {
     private DialogueContainerSO currentDialogueContainer;
     private DialogueGraphView graphView;
+    private DialogueSaveAndLoad saveAndLoad;
 
     private LanguageType languageType = LanguageType.Russian;
     private ToolbarMenu toolbarMenu;
@@ -52,6 +53,8 @@ public class DialogueEditorWindow : EditorWindow
         graphView = new DialogueGraphView(this);
         graphView.StretchToParentSize();
         rootVisualElement.Add(graphView);
+
+        saveAndLoad = new DialogueSaveAndLoad(graphView);
     }
 
     private void GenerateToolBar()
@@ -112,8 +115,10 @@ public class DialogueEditorWindow : EditorWindow
 
     private void Save()
     {
-        // TODO: Save it
-        Debug.Log("Save");
+        if (currentDialogueContainer != null)
+        {
+            saveAndLoad.Save(currentDialogueContainer);
+        }
     }
 
     private void Language(LanguageType _language, ToolbarMenu _toolbarMenu)
