@@ -104,12 +104,11 @@ public class DialogueEditorWindow : EditorWindow
 
     private void Load()
     {
-        // TODO: Load it
-        Debug.Log("Load");
         if (currentDialogueContainer != null)
         {
             Language(LanguageType.Russian, toolbarMenu);
             nameOfDialogueContainer.text = "Name: " + currentDialogueContainer;
+            saveAndLoad.Load(currentDialogueContainer);
         }
     }
 

@@ -12,8 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fed56465d2e9f549ab1654caa415a90, type: 3}
   m_Name: New Dialogue Container SO
   m_EditorClassIdentifier: 
-  NodeLinkDatas: []
-  DialogueNodeDatas: []
+  NodeLinkDatas:
+  - BaseNodeGuid: 9881f5fe-e296-42b2-afe0-1dd04d63c1f4
+    TargetNodeGuid: 19c2c003-7116-4aa1-a964-e16bfb05b571
+  DialogueNodeDatas:
+  - NodeGuid: 19c2c003-7116-4aa1-a964-e16bfb05b571
+    Position: {x: 425, y: 178}
+    DialogueNodePorts: []
+    Sprite: {fileID: 0}
+    DialogueBackgroundImageType: 0
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    Name: 
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: 
+    - LanguageType: 1
+      LanguageGenericType: 
+    - LanguageType: 2
+      LanguageGenericType: 
   EndNodeDatas: []
-  StartNodeDatas: []
+  StartNodeDatas:
+  - NodeGuid: 9881f5fe-e296-42b2-afe0-1dd04d63c1f4
+    Position: {x: 288, y: 197}
   EventNodeDatas: []
