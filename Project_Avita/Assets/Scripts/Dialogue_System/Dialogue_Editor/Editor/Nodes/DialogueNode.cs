@@ -19,9 +19,9 @@ public class DialogueNode : BaseNode
 
     public List<LanguageGeneric<string>> Texts { get => texts; set => texts = value; }
     public List<LanguageGeneric<AudioClip>> AudioClips { get => audioClips; set => audioClips = value; }
-    public Sprite BackgroundImage { get => backgroundImage; set => backgroundImage = value; }
     public string Name { get => name; set => name = value; }
-    public DialogueBackgroundImageType BackgroundImageType { get => BackgroundImageType; set => BackgroundImageType = value; }
+    public Sprite BackgroundImage { get => backgroundImage; set => backgroundImage = value; }
+    public DialogueBackgroundImageType BackgroundImageType { get => backgroundImageType; set => backgroundImageType = value; }
     public List<DialogueNodePort> DialogueNodePorts { get => dialogueNodePorts; set => dialogueNodePorts = value; }
 
     private TextField texts_Field;

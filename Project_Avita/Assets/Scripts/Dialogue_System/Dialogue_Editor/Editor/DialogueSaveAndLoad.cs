@@ -95,7 +95,7 @@ public class DialogueSaveAndLoad
         {
             foreach (Edge edge in edges)
             {
-                if(edge.output == nodePort.MyPort)
+                if (edge.output == nodePort.MyPort)
                 {
                     nodePort.OutputGuid = (edge.output.node as BaseNode).NodeGuid;
                     nodePort.InputGuid = (edge.input.node as BaseNode).NodeGuid;
