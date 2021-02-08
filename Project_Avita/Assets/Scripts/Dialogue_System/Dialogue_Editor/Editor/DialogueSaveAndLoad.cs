@@ -88,7 +88,7 @@ public class DialogueSaveAndLoad
             NodeGuid = _node.NodeGuid,
             Position = _node.GetPosition().position,
             TextType = _node.Texts,
-            Name = _node.name,
+            Name = _node.Name,
             AudioClips = _node.AudioClips,
             DialogueBackgroundImageType = _node.BackgroundImageType,
             Sprite = _node.BackgroundImage,
@@ -97,6 +97,8 @@ public class DialogueSaveAndLoad
 
         foreach (DialogueNodePort nodePort in dialogueNodeData.DialogueNodePorts)
         {
+            nodePort.OutputGuid = string.Empty;
+            nodePort.InputGuid = string.Empty;
             foreach (Edge edge in edges)
             {
                 if (edge.output == nodePort.MyPort)
@@ -196,7 +198,7 @@ public class DialogueSaveAndLoad
         {
             DialogueNode tempNode = graphView.CreateDialogueNode(node.Position);
             tempNode.NodeGuid = node.NodeGuid;
-            tempNode.name = node.Name;
+            tempNode.Name = node.Name;
             tempNode.Texts = node.TextType;
             tempNode.BackgroundImage = node.Sprite;
             tempNode.BackgroundImageType = node.DialogueBackgroundImageType;
@@ -236,8 +238,11 @@ public class DialogueSaveAndLoad
         {
             foreach (DialogueNodePort nodePort in dialogueNode.DialogueNodePorts)
             {
-                BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
-                LinkNodesTogether(nodePort.MyPort, (Port)targetNode.inputContainer[0]);
+                if(nodePort.InputGuid != string.Empty)
+                {
+                    BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
+                    LinkNodesTogether(nodePort.MyPort, (Port)targetNode.inputContainer[0]);
+                }
             }
         }
     }
