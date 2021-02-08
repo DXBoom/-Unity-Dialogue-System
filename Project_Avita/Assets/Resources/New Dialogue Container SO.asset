@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fed56465d2e9f549ab1654caa415a90, type: 3}
   m_Name: New Dialogue Container SO
   m_EditorClassIdentifier: 
-  NodeLinkDatas: []
+  NodeLinkDatas:
+  - BaseNodeGuid: b327c9dd-de4f-4cdb-a69c-4b279c8f5187
+    TargetNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
+  - BaseNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
+    TargetNodeGuid: 1d5291db-e5ac-439b-bf8e-fde2d7c98a91
+  - BaseNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
+    TargetNodeGuid: 81b5de39-d646-454b-9da7-bce755a12cbd
+  - BaseNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
+    TargetNodeGuid: ac49649f-0966-43ab-b540-187ea5294379
   DialogueNodeDatas:
-  - NodeGuid: 996e5923-51e6-4de8-8dee-7a5bbdf1f229
-    Position: {x: 340, y: 130}
+  - NodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
+    Position: {x: 290, y: 104}
     DialogueNodePorts:
-    - InputGuid: 
-      OutputGuid: 
+    - InputGuid: 1d5291db-e5ac-439b-bf8e-fde2d7c98a91
+      OutputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
       TextLanguages:
       - LanguageType: 0
         LanguageGenericType: Choice 1
@@ -26,8 +34,8 @@ MonoBehaviour:
         LanguageGenericType: Choice 1
       - LanguageType: 2
         LanguageGenericType: Choice 1
-    - InputGuid: 
-      OutputGuid: 
+    - InputGuid: 81b5de39-d646-454b-9da7-bce755a12cbd
+      OutputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
       TextLanguages:
       - LanguageType: 0
         LanguageGenericType: Choice 2
@@ -35,8 +43,8 @@ MonoBehaviour:
         LanguageGenericType: Choice 2
       - LanguageType: 2
         LanguageGenericType: Choice 2
-    - InputGuid: 
-      OutputGuid: 
+    - InputGuid: ac49649f-0966-43ab-b540-187ea5294379
+      OutputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
       TextLanguages:
       - LanguageType: 0
         LanguageGenericType: Choice 3
@@ -44,7 +52,7 @@ MonoBehaviour:
         LanguageGenericType: Choice 3
       - LanguageType: 2
         LanguageGenericType: Choice 3
-    Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 0}
     DialogueBackgroundImageType: 0
     AudioClips:
     - LanguageType: 0
@@ -53,14 +61,25 @@ MonoBehaviour:
       LanguageGenericType: {fileID: 0}
     - LanguageType: 2
       LanguageGenericType: {fileID: 0}
-    Name: dasdasd
+    Name: 
     TextType:
     - LanguageType: 0
       LanguageGenericType: 
     - LanguageType: 1
-      LanguageGenericType: gqwhge
+      LanguageGenericType: 
     - LanguageType: 2
       LanguageGenericType: 
-  EndNodeDatas: []
-  StartNodeDatas: []
-  EventNodeDatas: []
+  EndNodeDatas:
+  - NodeGuid: ac49649f-0966-43ab-b540-187ea5294379
+    Position: {x: 767, y: 143}
+    EndNodeType: 3
+  - NodeGuid: 81b5de39-d646-454b-9da7-bce755a12cbd
+    Position: {x: 587, y: 277}
+    EndNodeType: 1
+  StartNodeDatas:
+  - NodeGuid: b327c9dd-de4f-4cdb-a69c-4b279c8f5187
+    Position: {x: 155, y: 167}
+  EventNodeDatas:
+  - NodeGuid: 1d5291db-e5ac-439b-bf8e-fde2d7c98a91
+    Position: {x: 517, y: 94}
+    DialogueEventSO: {fileID: 0}
