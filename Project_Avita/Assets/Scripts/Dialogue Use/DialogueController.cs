@@ -11,7 +11,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private Text textName;
     [SerializeField] private Text textBox;
     [Header("Image")]
-    [SerializeField] private Image centerImageGO;
+    [SerializeField] private Sprite centerImageGO;
     [Header("Buttons")]
     [SerializeField] private Button button01;
     [SerializeField] private Text buttonText01;
@@ -54,7 +54,7 @@ public class DialogueController : MonoBehaviour
         textBox.text = _textBox;
     }
 
-    public void SetImage(Image _image)
+    public void SetImage(Sprite _image)
     {
         centerImageGO = _image;
     }
