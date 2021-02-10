@@ -31,6 +31,14 @@ public class DialogueSaveAndLoad
         ClearGraph();
         GenerateNodes(_dialogueContainerSO);
         ConnectNodes(_dialogueContainerSO);
+        GenerateMiniMap();
+    }
+
+    private void GenerateMiniMap()
+    {
+        var miniMap = new MiniMap { anchored = true };
+        miniMap.SetPosition(new Rect(10, 30, 200, 140));
+        graphView.Add(miniMap);
     }
 
     #region Save

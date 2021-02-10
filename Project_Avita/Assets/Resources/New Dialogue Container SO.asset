@@ -13,69 +13,16 @@ MonoBehaviour:
   m_Name: New Dialogue Container SO
   m_EditorClassIdentifier: 
   NodeLinkDatas:
-  - BaseNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-    TargetNodeGuid: 1d5291db-e5ac-439b-bf8e-fde2d7c98a91
-  - BaseNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-    TargetNodeGuid: 81b5de39-d646-454b-9da7-bce755a12cbd
-  - BaseNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-    TargetNodeGuid: ac49649f-0966-43ab-b540-187ea5294379
-  - BaseNodeGuid: b327c9dd-de4f-4cdb-a69c-4b279c8f5187
-    TargetNodeGuid: ad64ab92-f58b-460d-b2f5-6f2f9c0e08bd
-  - BaseNodeGuid: ad64ab92-f58b-460d-b2f5-6f2f9c0e08bd
-    TargetNodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
+  - BaseNodeGuid: bcea35e4-bd07-4b9e-8074-0f5df9e1fe53
+    TargetNodeGuid: d8d3be54-aa9b-4b44-98f9-63b586125362
+  - BaseNodeGuid: d8d3be54-aa9b-4b44-98f9-63b586125362
+    TargetNodeGuid: c6e1055a-4c66-4dea-a20b-948def3176a7
   DialogueNodeDatas:
-  - NodeGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-    Position: {x: 290, y: 104}
+  - NodeGuid: d8d3be54-aa9b-4b44-98f9-63b586125362
+    Position: {x: 320, y: 27}
     DialogueNodePorts:
-    - InputGuid: 1d5291db-e5ac-439b-bf8e-fde2d7c98a91
-      OutputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Choice 1
-      - LanguageType: 1
-        LanguageGenericType: Choice 1
-      - LanguageType: 2
-        LanguageGenericType: Choice 1
-    - InputGuid: 81b5de39-d646-454b-9da7-bce755a12cbd
-      OutputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Choice 2
-      - LanguageType: 1
-        LanguageGenericType: Choice 2
-      - LanguageType: 2
-        LanguageGenericType: Choice 2
-    - InputGuid: ac49649f-0966-43ab-b540-187ea5294379
-      OutputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Choice 3
-      - LanguageType: 1
-        LanguageGenericType: Choice 3
-      - LanguageType: 2
-        LanguageGenericType: Choice 3
-    Sprite: {fileID: 0}
-    DialogueBackgroundImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 1
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 2
-      LanguageGenericType: {fileID: 0}
-    Name: John
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: 
-    - LanguageType: 1
-      LanguageGenericType: Arara!
-    - LanguageType: 2
-      LanguageGenericType: 
-  - NodeGuid: ad64ab92-f58b-460d-b2f5-6f2f9c0e08bd
-    Position: {x: 81, y: 109}
-    DialogueNodePorts:
-    - InputGuid: 6cd2c31c-8cf9-42d0-a67d-8849e6a18f22
-      OutputGuid: ad64ab92-f58b-460d-b2f5-6f2f9c0e08bd
+    - InputGuid: c6e1055a-4c66-4dea-a20b-948def3176a7
+      OutputGuid: d8d3be54-aa9b-4b44-98f9-63b586125362
       TextLanguages:
       - LanguageType: 0
         LanguageGenericType: Choice 1
@@ -92,25 +39,19 @@ MonoBehaviour:
       LanguageGenericType: {fileID: 0}
     - LanguageType: 2
       LanguageGenericType: {fileID: 0}
-    Name: Barbara
+    Name: 
     TextType:
     - LanguageType: 0
       LanguageGenericType: 
     - LanguageType: 1
-      LanguageGenericType: Hey!
+      LanguageGenericType: 
     - LanguageType: 2
       LanguageGenericType: 
   EndNodeDatas:
-  - NodeGuid: ac49649f-0966-43ab-b540-187ea5294379
-    Position: {x: 941, y: 139}
-    EndNodeType: 3
-  - NodeGuid: 81b5de39-d646-454b-9da7-bce755a12cbd
-    Position: {x: 761, y: 273}
-    EndNodeType: 1
+  - NodeGuid: c6e1055a-4c66-4dea-a20b-948def3176a7
+    Position: {x: 618, y: 89}
+    EndNodeType: 0
   StartNodeDatas:
-  - NodeGuid: b327c9dd-de4f-4cdb-a69c-4b279c8f5187
-    Position: {x: -61, y: 146}
-  EventNodeDatas:
-  - NodeGuid: 1d5291db-e5ac-439b-bf8e-fde2d7c98a91
-    Position: {x: 691, y: 90}
-    DialogueEventSO: {fileID: 0}
+  - NodeGuid: bcea35e4-bd07-4b9e-8074-0f5df9e1fe53
+    Position: {x: 153, y: 104}
+  EventNodeDatas: []

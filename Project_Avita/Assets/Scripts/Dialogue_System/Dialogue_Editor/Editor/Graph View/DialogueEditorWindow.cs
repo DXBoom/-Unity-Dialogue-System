@@ -29,7 +29,7 @@ public class DialogueEditorWindow : EditorWindow
             DialogueEditorWindow window = (DialogueEditorWindow)GetWindow(typeof(DialogueEditorWindow));
             window.titleContent = new GUIContent("Dialogue Editor");
             window.currentDialogueContainer = item as DialogueContainerSO;
-            window.minSize = new Vector2(500, 250);
+            window.minSize = new Vector2(750, 650);
             window.Load();
         }
 
